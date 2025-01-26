@@ -40,6 +40,9 @@ def add_or_update_expense(expense_date: date, expenses: List[Expense]):
 @router.post("/analytics")
 def get_analytics_data(date_range: DateRange):
 
+    if date_range.start_date > date_range.end_date:
+        raise HTTPException(status_code=400, detail='The start date should be less than end date.')
+
     summary = db_helper.fetch_expense_summary(date_range.start_date, date_range.end_date)
 
     if not summary:
