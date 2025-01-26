@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-API_URL = "https://spend-analyzer-cot93u3wt-jey-projects.vercel.app"
+API_URL = "https://spend-analyzer-git-main-jey-projects.vercel.app"
 
 
 def analytics_category_tab():

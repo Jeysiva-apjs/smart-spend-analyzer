@@ -3,7 +3,7 @@ from datetime import datetime
 import requests
 import time
 
-API_URL = "https://spend-analyzer-cot93u3wt-jey-projects.vercel.app"
+API_URL = "https://spend-analyzer-git-main-jey-projects.vercel.app"
 
 
 def add_update_tab():
