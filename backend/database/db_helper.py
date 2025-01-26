@@ -1,8 +1,4 @@
 from database.connection import get_db_cursor
-from logging_setup import setup_logger
-from pathlib import Path
-
-logger = setup_logger('db_helper')
 
 def fetch_all_records():
     with get_db_cursor() as cursor:
@@ -10,9 +6,7 @@ def fetch_all_records():
         expenses = cursor.fetchall()
         return expenses
 
-
 def fetch_expenses_for_date(expense_date):
-    logger.info(f"fetch_expenses_for_date: {expense_date}")
     with get_db_cursor() as cursor:
         cursor.execute("SELECT * FROM expenses WHERE expense_date = %s", (expense_date,))
         expenses = cursor.fetchall()
@@ -20,7 +14,6 @@ def fetch_expenses_for_date(expense_date):
 
 
 def insert_expense(expense_date, amount, category, notes):
-    logger.info(f"insert_expense: date:{expense_date} amount:{amount} category:{category} notes:{notes} ")
     with get_db_cursor(commit=True) as cursor:
         cursor.execute(
             "INSERT INTO expenses (expense_date, amount, category, notes) VALUES (%s, %s, %s, %s)",
@@ -29,12 +22,10 @@ def insert_expense(expense_date, amount, category, notes):
 
 
 def delete_expenses_for_date(expense_date):
-    logger.info(f"delete_expenses_for_date: {expense_date}")
     with get_db_cursor(commit=True) as cursor:
         cursor.execute("DELETE FROM expenses WHERE expense_date = %s", (expense_date,))
 
 def fetch_expense_summary(start_date, end_date):
-    logger.info(f"fetch_expense_summary: start date:{start_date} end date:{end_date} ")
     with get_db_cursor() as cursor:
         cursor.execute('''
         SELECT category, ROUND(SUM(amount), 2) as total
