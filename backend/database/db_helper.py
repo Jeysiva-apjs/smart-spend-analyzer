@@ -1,5 +1,5 @@
-from backend.database.connection import get_db_cursor
-from backend.logging_setup import setup_logger
+from database.connection import get_db_cursor
+from logging_setup import setup_logger
 from pathlib import Path
 
 logger = setup_logger('db_helper')
