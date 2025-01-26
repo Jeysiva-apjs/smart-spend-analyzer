@@ -1,11 +1,5 @@
+uvicorn
 fastapi
 pydantic
-uvicorn
 mysql-connector-python
-pandas
-requests
-pytest
-matplotlib
-seaborn
 python-dotenv
-uvicorn
