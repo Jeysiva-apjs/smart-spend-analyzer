@@ -33,7 +33,7 @@ def analytics_category_tab():
         response = response.json()
 
         if not response:
-            st.write("No details to fetch")
+            st.write("Error: Unable to fetch details.")
             return
 
         data = {
@@ -43,46 +43,29 @@ def analytics_category_tab():
         }
 
         df = pd.DataFrame(data)
-        # st.title("Expense Breakdown By Category")
-
-        # palette = sns.color_palette("pastel", len(df))
-
-
-        # # Plotting with matplotlib
-        # fig, ax = plt.subplots(figsize=(8, 4)) 
-        # ax.bar(df["Category"], df["Percentage"], color=palette)
-        # ax.set_xlabel("Category", fontsize=14)
-        # ax.set_ylabel("Percentage", fontsize=14)
-        # plt.xticks(rotation=0, fontsize=7)  # Rotate x-axis labels at 45 degrees
-
-
-        # Streamlit App
         st.title("Expense Breakdown By Category")
 
-        # Define a color palette
         palette = sns.color_palette("pastel", len(df))
 
-        # Plotting with matplotlib
         if chart_type == "Bar Chart":
             fig, ax = plt.subplots(figsize=(8, 4))
             ax.bar(df["Category"], df["Percentage"], color=palette)
             ax.set_xlabel("Category", fontsize=14)
             ax.set_ylabel("Percentage", fontsize=14)
             plt.xticks(rotation=0, fontsize=7)
-            st.pyplot(fig)  # Display the bar chart
+            st.pyplot(fig)  
         elif chart_type == "Pie Chart":
             fig, ax = plt.subplots(figsize=(4, 4))
             wedges, texts, autotexts = ax.pie(
                 df["Percentage"],
-                labels=None,  # Remove labels from the pie chart
+                labels=None,  
                 autopct="%1.1f%%",
                 colors=palette,
                 startangle=90
             )
             for autotext in autotexts:
-                autotext.set_fontsize(5)  # Adjust the number to your desired font size
+                autotext.set_fontsize(5) 
 
-            # Add a legend for the categories
             ax.legend(
                 wedges, 
                 df["Category"],
