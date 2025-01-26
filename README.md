@@ -31,7 +31,7 @@ Follow these steps to set up the **Expense Analyzer** on your system.
 
 1. **Clone the project repository:**
    ```bash
-   git clone https://github.com/yourusername/expense-analyzer.git
+   git clone https://github.com/Jeysiva-apjs/spend-analyzer.git
    cd expense-analyzer
 
 2. **Install dependencies:**  
