@@ -1,6 +1,6 @@
 # Expense Analyzer
 
-**Expense Analyzer** is a full-stack application to manage and track expenses. You can add and update your expenses, categorize them, and see your spending over specific date ranges or by month.
+**Expense Analyzer** is a full-stack app for managing and tracking expenses. It lets you add, update, and categorize expenses while providing analytics to visualize spending by date range or month.
 
 ## Features
 
