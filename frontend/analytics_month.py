@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-API_URL = "http://localhost:8000"
+API_URL = "https://spend-analyzer-cot93u3wt-jey-projects.vercel.app"
 
 def analytics_month_tab():
     response = requests.get(f"{API_URL}/analytics_month")
