@@ -32,8 +32,8 @@ def analytics_category_tab():
         response = requests.post(f"{API_URL}/analytics/", json=payload)
         response = response.json()
 
-        if response.status_code == 400:
-            st.write(response.detail)
+        if not response:
+            st.write("No details to fetch")
             return
 
         data = {
