@@ -5,7 +5,7 @@
 # Demo and live app
 
 - Demo Video:- 
-- Live App:- https://spend-analyzer.streamlit.app/
+- Live App:- [https://spend-analyzer.streamlit.app/](https://jeysiva-apjs-spend-analyzer-clientapp-gwtlpz.streamlit.app/)
 
 ## Built With
 
