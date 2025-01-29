@@ -2,6 +2,18 @@
 
 **Expense Analyzer** is a full-stack app for managing and tracking expenses. It lets you add, update, and categorize expenses while providing analytics to visualize spending by date range or month.
 
+# Demo and live app
+
+- Demo Video:- 
+- Live App:- https://spend-analyzer.streamlit.app/
+
+## Built With
+
+- Python
+- FastAPI
+- Streamlit
+- Data Visualisation using pandas, matplotlib and seaborn.
+
 ## Features
 
 - **Add and Update Expenses**: Easily add and change your expenses by date and category.
@@ -12,8 +24,8 @@
 
 The project has the following folders:
 
-- **frontend/**: Contains the code for the Streamlit app, where you interact with the tool.
-- **backend/**: Contains the code for the FastAPI server, which handles the data and requests.
+- **client/**: Contains the code for the Streamlit app, where you interact with the tool.
+- **server/**: Contains the code for the FastAPI server, which handles the data and requests.
 - **tests/**: Contains test files to check if everything is working properly.
 - **requirements.txt**: Lists all the Python libraries needed to run the project.
 - **README.md**: This file, which explains the project and how to use it.
@@ -22,10 +34,6 @@ The project has the following folders:
 
 Follow these steps to set up the **Expense Analyzer** on your system.
 
-### Prerequisites
-
-- Python 3.7 or later
-- `pip` to install the required libraries
 
 ### Installation
 
@@ -41,11 +49,11 @@ Follow these steps to set up the **Expense Analyzer** on your system.
 
 3. **Run the FastAPI server:** 
    ```commandline
-    cd backend
-    python3 main.py
+    cd server
+    uvicorn main:app --reload
    ```
 4. **Run the Streamlit app:**:   
    ```commandline
-    cd frontend
+    cd client
     streamlit run app.py
    ```
