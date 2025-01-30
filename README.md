@@ -23,8 +23,8 @@
 
 The project has the following folders:
 
-- **client/**: Contains the code for the Streamlit app, where you interact with the tool.
-- **server/**: Contains the code for the FastAPI server, which handles the data and requests.
+- **frontend/**: Contains the code for the Streamlit app, where you interact with the tool.
+- **backend/**: Contains the code for the FastAPI server, which handles the data and requests.
 - **tests/**: Contains test files to check if everything is working properly.
 - **requirements.txt**: Lists all the Python libraries needed to run the project.
 - **README.md**: This file, which explains the project and how to use it.
@@ -48,11 +48,11 @@ Follow these steps to set up the **Expense Analyzer** on your system.
 
 3. **Run the FastAPI server:** 
    ```commandline
-    cd server
+    cd backend
     uvicorn main:app --reload
    ```
 4. **Run the Streamlit app:**:   
    ```commandline
-    cd client
+    cd frontend
     streamlit run app.py
    ```
