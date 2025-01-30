@@ -1,10 +1,10 @@
-# Expense Analyzer
+# Spend Analyzer
 
-**Expense Analyzer** is a full-stack app for managing and tracking expenses. It lets you add, update, and categorize expenses while providing analytics to visualize spending by date range or month.
+**Spend Analyzer** is a full-stack app for managing and tracking expenses. It lets you add, update, and categorize expenses while providing analytics to visualize spending by date range or month.
 
 # Demo and live app
 
-- Live App:- [https://spend-analyzer.streamlit.app/](https://jeysiva-apjs-spend-analyzer-clientapp-gwtlpz.streamlit.app/)
+- Live App:-  https://spend-analyzer.streamlit.app/
 
 ![image](https://github.com/user-attachments/assets/5ad9e676-5de3-4b94-a074-4ee9903684dc)
 
