@@ -6,6 +6,10 @@
 
 - Live App:- [https://spend-analyzer.streamlit.app/](https://jeysiva-apjs-spend-analyzer-clientapp-gwtlpz.streamlit.app/)
 
+![1](https://github.com/user-attachments/assets/95aed0a8-d6fe-4c9c-8124-d96be2903fbb)
+![2 1](https://github.com/user-attachments/assets/b8704525-b66e-44ea-9787-8ebf64eac358)
+
+
 ## Built With
 
 - Python
