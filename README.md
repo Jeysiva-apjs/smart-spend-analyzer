@@ -11,6 +11,7 @@
 - Python
 - FastAPI
 - Streamlit
+- MySQL DataBase
 - Data Visualisation using pandas, matplotlib and seaborn.
 
 ## Features
