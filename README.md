@@ -2,7 +2,7 @@
 
 It is a full-stack app for tracking expenses with ML-powered categorization. It allows adding, updating, and analyzing expenses with visualizations by date or month. 
 
-# Demo and live app 
+## Live app 
 https://jeysiva-apjs-ssa.streamlit.app/
 
 ## Features
