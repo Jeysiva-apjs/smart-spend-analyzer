@@ -15,6 +15,7 @@ with tab1:
     add_tab(selected_date)
     update_tab(selected_date)
 
+
 with tab2:
     analytics_category_tab()
 
