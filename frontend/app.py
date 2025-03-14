@@ -18,6 +18,7 @@ with tab1:
     with col2:
         selected_date = st.date_input("Enter Date", date.today(), label_visibility="collapsed")
 
+    st.markdown("<br></br>")
     st.subheader('Add New Expense')
     add_tab(selected_date)
     update_tab(selected_date)
