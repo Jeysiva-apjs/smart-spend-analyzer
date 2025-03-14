@@ -13,7 +13,7 @@ tab1, tab2, tab3 = st.tabs(["Add/Update", "Analyse by Category", "Analyse by Mon
 with tab1:
     selected_date = st.date_input("Enter Date", date.today(), label_visibility="collapsed")
     add_tab(selected_date)
-    update_tab()
+    update_tab(selected_date)
 
 with tab2:
     analytics_category_tab()
