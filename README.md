@@ -1,14 +1,16 @@
-# Spend Analyzer
+# Samrt Spend Analyzer
 
-**Spend Analyzer** is a full-stack app for managing and tracking expenses. It lets you add, update, and categorize expenses while providing analytics to visualize spending by date range or month.
+It is a full-stack app for tracking expenses with ML-powered categorization. It allows adding, updating, and analyzing expenses with visualizations by date or month. 
 
-# Demo and live app
+# Demo and live app 
+https://jeysiva-apjs-ssa.streamlit.app/
 
-- Live App:-  https://spend-analyzer.streamlit.app/
+## Features
 
-![image](https://github.com/user-attachments/assets/5ad9e676-5de3-4b94-a074-4ee9903684dc)
-
-
+- **ML-Powered Categorization**: Automatically classify expenses based on user input into categories such as Utilities, Food &      Groceries, Transportation, Health & Wellness, Entertainment and Others.
+- **Add and Update Expenses**: Easily add and modify expenses by date and category.
+- **Analyze by Date Range**: View your expenses for a selected time period.
+- **Monthly Analysis**: See how much you spend each month and track trends.
 
 ## Built With
 
@@ -17,18 +19,14 @@
 - Streamlit
 - MySQL DataBase
 - Data Visualisation using pandas, matplotlib and seaborn.
+- Scikit-learn (Naïve Bayes Multinomial algorithm)
 
-## Features
-
-- **Add and Update Expenses**: Easily add and change your expenses by date and category.
-- **Analyze by Date Range**: View your expenses for a selected time period.
-- **Monthly Analysis**: See how much you spend each month and track trends.
 
 ## Project Structure
 
 The project has the following folders:
 
-- **frontend/**: Contains the code for the Streamlit app, where you interact with the tool.
+- **frontend/**: Contains the code for the Streamlit app and ML model.
 - **backend/**: Contains the code for the FastAPI server, which handles the data and requests.
 - **tests/**: Contains test files to check if everything is working properly.
 - **requirements.txt**: Lists all the Python libraries needed to run the project.
