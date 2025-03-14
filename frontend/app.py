@@ -28,7 +28,7 @@ st.markdown("""
 st.title("\U0001F4B8 Smart Spend Analyzer")
 
 # Display Current Date
-current_date = datetime.date.today()
+current_date = date.today()
 st.write(f"📅 Today's Date: {current_date.strftime('%B %d, %Y')}")
 
 # Tabs
