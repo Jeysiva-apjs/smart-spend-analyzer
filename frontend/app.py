@@ -11,13 +11,8 @@ st.title("Smart Spend Analyzer")
 tab1, tab2, tab3 = st.tabs(["Add/Update", "Analyse by Category", "Analyse by Month"])
 
 with tab1:
-    col1, col2 = st.columns([0.5, 4])  # Adjust column width as needed
-    with col1:
-        # st.markdown("<p style='font-size: 25px; font-weight: bold;'>Date:</p>", unsafe_allow_html=True)
-        st.subheader('Date:')
-
-    with col2:
-        selected_date = st.date_input("Enter Date", date.today(), label_visibility="collapsed")
+    st.subheader('Date:')
+    selected_date = st.date_input("Enter Date", date.today(), label_visibility="collapsed")
 
     st.subheader('Add New Expense')
     add_tab(selected_date)
