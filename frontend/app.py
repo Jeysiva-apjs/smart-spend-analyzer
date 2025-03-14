@@ -3,7 +3,7 @@ from add_update import add_tab
 from add_update import update_tab
 from analytics_category import analytics_category_tab
 from analytics_month import analytics_month_tab
-from datetime import datetime
+from datetime import date
 
 
 # Apply custom styling to center content
