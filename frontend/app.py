@@ -6,27 +6,38 @@ from analytics_month import analytics_month_tab
 from datetime import datetime
 
 
-# Page Title with Centered Styling
-st.markdown("<h1 class='title'>Smart Spend Analyzer</h1>", unsafe_allow_html=True)
+# Apply custom styling to center content
+st.markdown("""
+    <style>
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        div.block-container {
+            max-width: 700px;
+        }
+        .stTabs [role="tablist"] {
+            justify-content: center;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
-# Tabs for Navigation
-tab1, tab2, tab3 = st.tabs(["📌 Add/Update", "📊 Analyse by Category", "📆 Analyse by Month"])
+# Title
+st.title("\U0001F4B8 Smart Spend Analyzer")
 
-# Tab 1: Add/Update Expense
+# Tabs
+tab1, tab2, tab3 = st.tabs(["➕ Add/Update", "📊 Analyse by Category", "📆 Analyse by Month"])
+
 with tab1:
-    st.markdown("<div class='date-container'>📅 <h3>Select a Date</h3></div>", unsafe_allow_html=True)
-    
-    selected_date = st.date_input("", datetime.today().date(), label_visibility="collapsed")
-
-    # Call Functions for Adding and Updating Expense
+    selected_date = st.date_input("Enter Date", datetime.date(2025, 1, 1), label_visibility="collapsed")
     add_tab(selected_date)
     update_tab(selected_date)
 
-# Tab 2: Analytics by Category
 with tab2:
     analytics_category_tab()
 
-# Tab 3: Analytics by Month
 with tab3:
     analytics_month_tab()
     
