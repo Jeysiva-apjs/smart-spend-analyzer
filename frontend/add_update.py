@@ -5,14 +5,14 @@ from expense_categorizer.categorizer_helper import categorise_expense
 
 API_URL = "https://spend-analyzer-git-main-jey-projects.vercel.app"
 
-def add_tab(selected_date):
-    # Initialize session state if not set
-    if "amount" not in st.session_state:
-        st.session_state.amount = 0.0
-    if "notes" not in st.session_state:
-        st.session_state.notes = ""
+# Ensure session state is initialized before UI loads
+if "amount" not in st.session_state:
+    st.session_state.amount = 0.0
+if "notes" not in st.session_state:
+    st.session_state.notes = ""
 
-    with st.form(key="expense_add_form", clear_on_submit=False):  # Don't clear on submit until validation passes
+def add_tab(selected_date):
+    with st.form(key="expense_add_form", clear_on_submit=False):  # Keep inputs until validation passes
         col1, col2 = st.columns(2)
         with col1:
             st.text("Amount")
@@ -25,15 +25,13 @@ def add_tab(selected_date):
                 label="Amount", 
                 min_value=0.0, 
                 step=1.0, 
-                value=st.session_state.amount, 
-                key="amount", 
+                key="amount",  # Uses session state key directly
                 label_visibility="collapsed"
             )
         with col2:
             notes_input = st.text_input(
                 label="Notes", 
-                value=st.session_state.notes, 
-                key="notes", 
+                key="notes",  # Uses session state key directly
                 label_visibility="collapsed"
             )
 
@@ -41,16 +39,16 @@ def add_tab(selected_date):
 
         if submit_button:
             # 🔹 Input Validation 🔹
-            if amount_input <= 0:
+            if st.session_state.amount <= 0:
                 st.error("Amount must be greater than 0!")
-            elif not notes_input.strip():
+            elif not st.session_state.notes.strip():
                 st.error("Notes cannot be empty!")
             else:
                 # Prepare expense data
                 expense = {
-                    'amount': amount_input,
-                    'category': categorise_expense(notes_input),
-                    'notes': notes_input
+                    'amount': st.session_state.amount,
+                    'category': categorise_expense(st.session_state.notes),
+                    'notes': st.session_state.notes
                 }
 
                 response = requests.post(f"{API_URL}/expenses/add/{selected_date}", json=expense)
@@ -58,14 +56,13 @@ def add_tab(selected_date):
                 if response.status_code == 200:
                     st.success("Expense added successfully!")
 
-                    # Clear session state variables after successful submission
+                    # Clear session state correctly
                     st.session_state.amount = 0.0
                     st.session_state.notes = ""
 
                     st.rerun()
                 else:
                     st.error("Failed to add expense.")
-
 
 def update_tab(selected_date):
     response = requests.get(f"{API_URL}/expenses/{selected_date}")
