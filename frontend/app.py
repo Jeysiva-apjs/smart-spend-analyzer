@@ -6,7 +6,7 @@ from analytics_month import analytics_month_tab
 from datetime import datetime
 
 
-st.title("Spend Analyzer")
+st.title("Smart Spend Analyzer")
 
 tab1, tab2, tab3 = st.tabs(["Add/Update", "Analyse by Category", "Analyse by Month"])
 
