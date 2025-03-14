@@ -11,7 +11,7 @@ st.title("Spend Analyzer")
 tab1, tab2, tab3 = st.tabs(["Add/Update", "Analyse by Category", "Analyse by Month"])
 
 with tab1:
-    col1, col2 = st.columns([1, 3])  # Adjust column width as needed
+    col1, col2 = st.columns([1, 6])  # Adjust column width as needed
     with col1:
         st.write("**Date:**")  # Custom label
     with col2:
