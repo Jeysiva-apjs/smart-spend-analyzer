@@ -11,7 +11,8 @@ st.title("Smart Spend Analyzer")
 tab1, tab2, tab3 = st.tabs(["Add/Update", "Analyse by Category", "Analyse by Month"])
 
 with tab1:
-    selected_date = st.date_input("Enter Date", datetime(2025, 1, 1), label_visibility="collapsed")
+    st.markdown("<h3 style='color: #4CAF50; font-weight: bold;'>📅 Select a Date</h3>", unsafe_allow_html=True)
+    selected_date = st.date_input("", datetime.today().date(), label_visibility="collapsed")
     add_tab(selected_date)
     update_tab(selected_date)
 
