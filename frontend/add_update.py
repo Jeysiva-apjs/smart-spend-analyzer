@@ -54,6 +54,8 @@ def update_tab(selected_date):
     if len(existing_expenses) == 0:
         return
     
+    st.subheader('Update Expenses')
+    
 
     categories = ["Utilities", "Food & Groceries", "Transportation", "Health & Wellness", "Entertainment", "Others"]
 
