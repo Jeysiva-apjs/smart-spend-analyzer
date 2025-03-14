@@ -5,12 +5,6 @@ from expense_categorizer.categorizer_helper import categorise_expense
 
 API_URL = "https://spend-analyzer-git-main-jey-projects.vercel.app"
 
-# Ensure session state is initialized before UI loads
-if "amount" not in st.session_state:
-    st.session_state.amount = 0.0
-if "notes" not in st.session_state:
-    st.session_state.notes = ""
-
 def add_tab(selected_date):
     with st.form(key="expense_add_form", clear_on_submit=False):  # Keep inputs until validation passes
         col1, col2 = st.columns(2)
