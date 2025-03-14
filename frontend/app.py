@@ -27,11 +27,15 @@ st.markdown("""
 # Title
 st.title("\U0001F4B8 Smart Spend Analyzer")
 
+# Display Current Date
+current_date = datetime.date.today()
+st.write(f"📅 Today's Date: {current_date.strftime('%B %d, %Y')}")
+
 # Tabs
 tab1, tab2, tab3 = st.tabs(["➕ Add/Update", "📊 Analyse by Category", "📆 Analyse by Month"])
 
 with tab1:
-    selected_date = st.date_input("Enter Date", datetime.date(2025, 1, 1), label_visibility="collapsed")
+    selected_date = st.date_input("Enter Date", current_date, label_visibility="collapsed")
     add_tab(selected_date)
     update_tab(selected_date)
 
@@ -40,4 +44,3 @@ with tab2:
 
 with tab3:
     analytics_month_tab()
-    
