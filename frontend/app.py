@@ -11,7 +11,7 @@ st.title("Spend Analyzer")
 tab1, tab2, tab3 = st.tabs(["Add/Update", "Analyse by Category", "Analyse by Month"])
 
 with tab1:
-    col1, col2 = st.columns([1, 10])  # Adjust column width as needed
+    col1, col2 = st.columns([1, 9])  # Adjust column width as needed
     with col1:
         st.markdown("<p style='font-size: 25px; font-weight: bold;'>Date:</p>", unsafe_allow_html=True)
 
