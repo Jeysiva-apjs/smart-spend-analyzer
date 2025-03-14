@@ -13,7 +13,7 @@ tab1, tab2, tab3 = st.tabs(["Add/Update", "Analyse by Category", "Analyse by Mon
 with tab1:
     col1, col2 = st.columns([1, 9])  # Adjust column width as needed
     with col1:
-        st.markdown("<p style='margin-top:10px; font-size: 20px;'>Date:</p>", unsafe_allow_html=True)
+        st.markdown("<p style='font-size: 20px;'>Date:</p>", unsafe_allow_html=True)
 
     with col2:
         selected_date = st.date_input("Enter Date", date.today(), label_visibility="collapsed")
