@@ -11,12 +11,12 @@ st.title("Spend Analyzer")
 tab1, tab2, tab3 = st.tabs(["Add/Update", "Analyse by Category", "Analyse by Month"])
 
 with tab1:
-    col1, col2 = st.columns([1, 6])  # Adjust column width as needed
+    col1, col2 = st.columns([1, 8])  # Adjust column width as needed
     with col1:
-        st.subheader("Date:")  
+        st.markdown("<p style='margin-top:10px; font-weight: bold;'>Date:</p>", unsafe_allow_html=True)
+
     with col2:
         selected_date = st.date_input("Enter Date", date.today(), label_visibility="collapsed")
-    # st.subheader("Selected Date:", selected_date)
 
     add_tab(selected_date)
     update_tab(selected_date)
