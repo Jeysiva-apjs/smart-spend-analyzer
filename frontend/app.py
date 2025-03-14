@@ -11,7 +11,9 @@ st.title("Spend Analyzer")
 tab1, tab2, tab3 = st.tabs(["Add/Update", "Analyse by Category", "Analyse by Month"])
 
 with tab1:
+    st.write("**Date:**")  # Custom label
     selected_date = st.date_input("Enter Date", date.today(), label_visibility="collapsed")
+    st.write("Selected Date:", selected_date)
     add_tab(selected_date)
     update_tab(selected_date)
 
