@@ -11,7 +11,7 @@ st.title("Smart Spend Analyzer")
 tab1, tab2, tab3 = st.tabs(["Add/Update", "Analyse by Category", "Analyse by Month"])
 
 with tab1:
-    st.subheader('Date:')
+    st.subheader('Enter Date')
     selected_date = st.date_input("Enter Date", date.today(), label_visibility="collapsed")
 
     st.subheader('Add New Expense')
