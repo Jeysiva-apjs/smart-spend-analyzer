@@ -6,7 +6,7 @@ from fastapi import APIRouter, HTTPException
 from datetime import date
 from typing import List
 from pydantic import BaseModel
-import database.db_helper as db_helper
+import database.db_helper as db_helper 
 
 router = APIRouter()
 
@@ -19,6 +19,7 @@ class DateRange(BaseModel):
     start_date: date
     end_date: date
 
+
 @router.get("/expenses", response_model=List[Expense])
 def get_all_expenses():
     expenses = db_helper.fetch_all_records()
@@ -29,8 +30,14 @@ def get_expenses_by_date(expense_date: date):
     expenses = db_helper.fetch_expenses_for_date(expense_date)
     return expenses
 
-@router.post("/expenses/{expense_date}")
-def add_or_update_expense(expense_date: date, expenses: List[Expense]):
+@router.post("/expenses/add/{expense_date}")
+def add_expense(expense_date: date, expense: Expense):
+    db_helper.insert_expense(expense_date, expense.amount, expense.category, expense.notes)
+    return {"message": "expense added successfully!"}
+
+
+@router.post("/expenses/update/{expense_date}")
+def update_expense(expense_date: date, expenses: List[Expense]):
     db_helper.delete_expenses_for_date(expense_date)
     for expense in expenses:
         db_helper.insert_expense(expense_date, expense.amount, expense.category, expense.notes)

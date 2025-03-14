@@ -1,19 +1,57 @@
 import streamlit as st
-from datetime import datetime
 import requests
 import time
+from expense_categorizer.categorizer_helper import categorise_expense
 
 API_URL = "https://spend-analyzer-git-main-jey-projects.vercel.app"
 
+def add_tab(selected_date):
+    with st.form(key="expense_add_form"):
+        col1, col2 = st.columns(2)
+        with col1:
+            st.text("Amount")
+        with col2:
+            st.text("Notes")
 
-def add_update_tab():
-    selected_date = st.date_input("Enter Date", datetime(2025, 1, 1), label_visibility="collapsed")
+        amount = 0.0
+        notes = ""
+
+        col1, col2 = st.columns(2)
+        with col1:
+            amount_input = st.number_input(label="Amount", min_value=0.0, step=1.0, value=amount, label_visibility="collapsed")
+        with col2:
+            notes_input = st.text_input(label="Notes", value=notes, label_visibility="collapsed")
+
+        expense = {
+            'amount': amount_input,
+            'category': categorise_expense(notes_input),
+            'notes': notes_input
+        }
+
+        submit_button = st.form_submit_button(label='Add Expense')
+
+        print(expense)
+
+        if submit_button:
+            response = requests.post(f"{API_URL}/expenses/add/{selected_date}", json=expense)
+
+            if response.status_code == 200:
+                st.success("Expense added successfully!")
+                time.sleep(2)
+                st.rerun()
+            else:
+                st.error("Failed to add expense.")
+
+
+def update_tab(selected_date):
     response = requests.get(f"{API_URL}/expenses/{selected_date}")
+    existing_expenses = []
     if response.status_code == 200:
         existing_expenses = response.json()
-    else:
-        st.error("Failed to retrieve expenses")
-        existing_expenses = []
+    
+    if len(existing_expenses) == 0:
+        return
+    
 
     categories = ["Utilities", "Food & Groceries", "Transportation", "Health & Wellness", "Entertainment", "Others"]
 
@@ -26,17 +64,14 @@ def add_update_tab():
             st.text("Category")
         with col3:
             st.text("Notes")
+        
+
 
         expenses = []
-        for i in range(len(existing_expenses)+1):
-            if i < len(existing_expenses):
-                amount = existing_expenses[i]['amount']
-                category = existing_expenses[i]["category"]
-                notes = existing_expenses[i]["notes"]
-            else:
-                amount = 0.0
-                category = "Others"
-                notes = ""
+        for i in range(0, len(existing_expenses)):
+            amount = existing_expenses[i]['amount']
+            category = existing_expenses[i]["category"]
+            notes = existing_expenses[i]["notes"]
 
             col1, col2, col3 = st.columns(3)
             with col1:
@@ -54,11 +89,12 @@ def add_update_tab():
                 'notes': notes_input
             })
 
-        submit_button = st.form_submit_button()
+        submit_button = st.form_submit_button(label="Update Expenses")
+
         if submit_button:
             filtered_expenses = [expense for expense in expenses if expense['amount'] > 0]
 
-            response = requests.post(f"{API_URL}/expenses/{selected_date}", json=filtered_expenses)
+            response = requests.post(f"{API_URL}/expenses/update/{selected_date}", json=filtered_expenses)
             if response.status_code == 200:
                 st.success("Expenses updated successfully!")
                 time.sleep(2)
