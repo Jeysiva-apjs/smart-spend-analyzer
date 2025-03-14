@@ -5,7 +5,6 @@ from expense_categorizer.categorizer_helper import categorise_expense
 
 API_URL = "https://spend-analyzer-git-main-jey-projects.vercel.app"
 
-
 def add_tab(selected_date):
     with st.form(key="expense_add_form", clear_on_submit=True):
         col1, col2 = st.columns(2)
@@ -16,53 +15,34 @@ def add_tab(selected_date):
 
         col1, col2 = st.columns(2)
         with col1:
-            amount_input = st.number_input(
-                label="Amount",
-                min_value=0.01,  # Ensures amount is greater than zero
-                step=1.0,
-                value=0.0,
-                label_visibility="collapsed"
-            )
+            amount_input = st.number_input(label="Amount", min_value=0.0, step=1.0, value=0.0, label_visibility="collapsed")
         with col2:
-            notes_input = st.text_input(
-                label="Notes",
-                value="",
-                label_visibility="collapsed"
-            )
+            notes_input = st.text_input(label="Notes", value="", label_visibility="collapsed")
 
         submit_button = st.form_submit_button(label='Add Expense')
 
         if submit_button:
-            errors = []
-
-            # Validation checks
-            if amount_input <= 0:
-                errors.append("Amount must be greater than zero.")
-            
+            if amount_input == 0.0:
+                st.error("Amount cannot be zero.")
+                return
             if not notes_input.strip():
-                errors.append("Notes cannot be empty.")
-            
-            if len(notes_input) > 100:
-                errors.append("Notes should not exceed 100 characters.")
+                st.error("Notes cannot be empty.")
+                return
 
-            if errors:
-                for error in errors:
-                    st.error(error)
+            expense = {
+                'amount': amount_input,
+                'category': categorise_expense(notes_input),
+                'notes': notes_input
+            }
+
+            response = requests.post(f"{API_URL}/expenses/add/{selected_date}", json=expense)
+
+            if response.status_code == 200:
+                st.success("Expense added successfully!")
+                time.sleep(2)
+                st.rerun()
             else:
-                expense = {
-                    'amount': amount_input,
-                    'category': categorise_expense(notes_input),
-                    'notes': notes_input.strip()
-                }
-
-                response = requests.post(f"{API_URL}/expenses/add/{selected_date}", json=expense)
-
-                if response.status_code == 200:
-                    st.success("Expense added successfully!")
-                    time.sleep(2)
-                    st.rerun()
-                else:
-                    st.error("Failed to add expense.")
+                st.error("Failed to add expense.")
 
 
 def update_tab(selected_date):
